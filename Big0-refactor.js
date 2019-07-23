@@ -44,4 +44,115 @@ function powerCalculator(base, exp) {
   }
 }
 
-powerCalculator(2, 10);
+// powerCalculator(2, 10);
+
+// function reverseString(str) {
+//   if (!str.length) {
+//     return '';
+//   }
+//   return str[str.length - 1] + reverseString(str.slice(0, str.length - 1));
+// }
+
+function reverseString(str) {
+  if (!str.length) {
+    return '';
+  } 
+  let newArray = [];
+  str.split('').map(letter => {
+    newArray.unshift(letter)
+  })
+  return newArray.join('');
+}
+
+// console.log(reverseString('cat'))
+
+function triangularNumberRec(n) {
+  if (n === 1) {
+    return 1;
+  }
+  return n + triangularNumberRec(n - 1);
+}
+
+// console.log(triangularNumberRec(5));
+
+function triangularNumber(n) {
+  if (n === 1) {
+    return 1;
+  }
+  let result = 1;
+  for (let i = n; i > 1; i--) {
+    result += i;
+  }
+  console.log(result)
+}
+
+// triangularNumber(5)
+
+function stringSplitterRec(str, seperator = '') {
+  if (!seperator) {
+    return str;
+  }
+  if (!str.length) {
+    return '';
+  }
+  if (str[0] === seperator) {
+    return '' + stringSplitterRec(str.slice(1), seperator);
+  }
+  return str[0] + stringSplitterRec(str.slice(1), seperator);
+}
+
+// console.log(stringSplitterRec('02/20/2020', '/'));
+
+
+function stringSplitter(str, seperator = '') {
+  if (!seperator) {
+    return str;
+  }
+  if (!str.length) {
+    return '';
+  }
+  return str.split('').filter(char => char !== seperator).join('')
+}
+
+// console.log(stringSplitter('02/20/2020', '/'));
+
+// console.time('fibonacci');
+// function fibonacci(n) {
+//   if (n === 0) return 0;
+//   if (n === 1) return 1;
+//   return fibonacci(n - 1) + fibonacci(n - 2);
+// }
+// let num = 10;
+// console.log(`fibonacci of ${num} is ${fibonacci(num)}`);
+// console.timeEnd('fibonacci')
+
+// console.time('fibonacciIterative');
+// function fibbonaciIterative(num){
+//   let arr = [0, 1];
+//   for (let i = 2; i < num + 1; i++){
+//     arr.push(arr[i - 2] + arr[i -1])
+//   }
+//  console.log(arr[num])
+//  console.timeEnd('fibonacciIterative')
+// }
+
+// fibbonaciIterative(10)
+console.time('factorialRec');
+function factorialRec(n) {
+  if (n === 0) return 1;
+  return (factorialRec(n-1) * n );
+}
+console.log(factorialRec(15))
+console.timeEnd('factorialRec')
+
+console.time('factorial');
+function factorial(n) {
+  if (n === 0 || n === 1) return 1;
+  result = 1;
+  for (let i = n; i > 1; i --) {
+    result *= i 
+  }
+  console.log(result)
+}
+factorial(1000)
+console.timeEnd('factorial')
