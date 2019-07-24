@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable eqeqeq */
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
-
 
 // Tower of Hanoi
 function TOH(num, source, dest, temp) {
@@ -56,11 +57,11 @@ function powerCalculator(base, exp) {
 function reverseString(str) {
   if (!str.length) {
     return '';
-  } 
+  }
   let newArray = [];
   str.split('').map(letter => {
-    newArray.unshift(letter)
-  })
+    newArray.unshift(letter);
+  });
   return newArray.join('');
 }
 
@@ -83,35 +84,37 @@ function triangularNumber(n) {
   for (let i = n; i > 1; i--) {
     result += i;
   }
-  console.log(result)
+  console.log(result);
 }
 
 // triangularNumber(5)
 
-function stringSplitterRec(str, seperator = '') {
-  if (!seperator) {
+function stringSplitterRec(str, separator = '') {
+  if (!separator) {
     return str;
   }
   if (!str.length) {
     return '';
   }
-  if (str[0] === seperator) {
-    return '' + stringSplitterRec(str.slice(1), seperator);
+  if (str[0] === separator) {
+    return '' + stringSplitterRec(str.slice(1), separator);
   }
-  return str[0] + stringSplitterRec(str.slice(1), seperator);
+  return str[0] + stringSplitterRec(str.slice(1), separator);
 }
 
 // console.log(stringSplitterRec('02/20/2020', '/'));
 
-
-function stringSplitter(str, seperator = '') {
-  if (!seperator) {
+function stringSplitter(str, separator = '') {
+  if (!separator) {
     return str;
   }
   if (!str.length) {
     return '';
   }
-  return str.split('').filter(char => char !== seperator).join('')
+  return str
+    .split('')
+    .filter(char => char !== separator)
+    .join('');
 }
 
 // console.log(stringSplitter('02/20/2020', '/'));
@@ -127,7 +130,7 @@ function stringSplitter(str, seperator = '') {
 // console.timeEnd('fibonacci')
 
 // console.time('fibonacciIterative');
-// function fibbonaciIterative(num){
+// function fibonacciIterative(num){
 //   let arr = [0, 1];
 //   for (let i = 2; i < num + 1; i++){
 //     arr.push(arr[i - 2] + arr[i -1])
@@ -136,23 +139,24 @@ function stringSplitter(str, seperator = '') {
 //  console.timeEnd('fibonacciIterative')
 // }
 
-// fibbonaciIterative(10)
-console.time('factorialRec');
+// fibonacciIterative(10)
+
+console.time('factorialRec'); // Start Timer
 function factorialRec(n) {
   if (n === 0) return 1;
-  return (factorialRec(n-1) * n );
+  return factorialRec(n - 1) * n;
 }
-console.log(factorialRec(15))
-console.timeEnd('factorialRec')
+console.log(factorialRec(1000));
+console.timeEnd('factorialRec'); // End timer
 
-console.time('factorial');
+console.time('factorial'); // Start Timer
 function factorial(n) {
   if (n === 0 || n === 1) return 1;
   result = 1;
-  for (let i = n; i > 1; i --) {
-    result *= i 
+  for (let i = n; i > 1; i--) {
+    result *= i;
   }
-  console.log(result)
+  return result;
 }
-factorial(1000)
-console.timeEnd('factorial')
+console.log(factorial(1000));
+console.timeEnd('factorial'); // End timer

@@ -1,5 +1,5 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
-'use strict';
 
 function countSheep(sheep) {
   if (sheep === 0) {
@@ -42,17 +42,17 @@ function triangularNumber(n) {
 
 // console.log(triangularNumber(9));
 
-function stringSplitter(str, seperator = '') {
-  if (!seperator) {
+function stringSplitter(str, separator = '') {
+  if (!separator) {
     return str;
   }
   if (!str.length) {
     return '';
   }
-  if (str[0] === seperator) {
-    return '' + stringSplitter(str.slice(1), seperator);
+  if (str[0] === separator) {
+    return '' + stringSplitter(str.slice(1), separator);
   }
-  return str[0] + stringSplitter(str.slice(1), seperator);
+  return str[0] + stringSplitter(str.slice(1), separator);
 }
 
 // console.log(stringSplitter('02/20/2020', '/'));
@@ -65,23 +65,17 @@ function fibonacci(n) {
 
 // console.log(fibonacci(6));
 
-
 function factorial(n) {
   if (n === 0) return 1;
-  return (factorial(n-1) * n );
+  return factorial(n - 1) * n;
 }
 
 // console.log(factorial(10));
 
-
-// Question 8 
+// Question 8
 // Question 9 == //maze[row][column] = ' ';
 
-let mySmallMaze = [
-  [' ', ' ', ' '],  
-  [' ', '*', ' '],
-  [' ', ' ', 'e']
-];
+let mySmallMaze = [[' ', ' ', ' '], [' ', '*', ' '], [' ', ' ', 'e']];
 
 let maze = [
   [' ', ' ', ' ', '*', ' ', ' ', ' '],
@@ -92,23 +86,23 @@ let maze = [
 ];
 
 function findWayOut(maze, position = 0, row, column, direction = 'S', path) {
-  if ( column < 0 || row < 0 ) return; 
-  if ( column >= maze[0].length || row >= maze.length ) return;
+  if (column < 0 || row < 0) return;
+  if (column >= maze[0].length || row >= maze.length) return;
 
   path[position] = direction;
   position++;
 
-  if ( maze[row][column] === 'e') {
-    console.log( 'found path :', path);
+  if (maze[row][column] === 'e') {
+    console.log('found path :', path);
     return;
   }
 
   if (maze[row][column] === ' ') {
     maze[row][column] = 'x';
-    findWayOut(maze, position, row, column -1, 'L', path);
-    findWayOut(maze, position, row -1, column, 'U', path);
-    findWayOut(maze, position, row, column +1, 'R', path);
-    findWayOut(maze, position, row +1, column, 'D', path);
+    findWayOut(maze, position, row, column - 1, 'L', path);
+    findWayOut(maze, position, row - 1, column, 'U', path);
+    findWayOut(maze, position, row, column + 1, 'R', path);
+    findWayOut(maze, position, row + 1, column, 'D', path);
     maze[row][column] = ' ';
   }
   position--;
@@ -171,7 +165,7 @@ function binaryRepresentation(n) {
     return '';
   }
   let binary = n % 2;
-  return binaryRepresentation(Math.floor(n/2)) + binary;
+  return binaryRepresentation(Math.floor(n / 2)) + binary;
 }
 
 console.log(binaryRepresentation(37));
